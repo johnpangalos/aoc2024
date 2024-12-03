@@ -1,6 +1,6 @@
 import * as fs from "fs/promises";
 
-const input = await fs.readFile("./day-03/test.txt", "utf8");
+const input = await fs.readFile("./day-03/input.txt", "utf8");
 console.log(
   input
     .matchAll(/mul\((\d+),(\d+\))/g)
