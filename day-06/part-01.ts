@@ -1,4 +1,3 @@
-import { Dirent } from "fs";
 import * as fs from "fs/promises";
 
 type Point = { x: number; y: number; value: string };
