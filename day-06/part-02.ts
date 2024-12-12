@@ -1,17 +1,14 @@
-import { Dirent } from "fs";
-import * as fs from "fs/promises";
-
 type Point = { x: number; y: number; value: string };
 type Direction = "up" | "down" | "left" | "right";
 type Step = { x: number; y: number; value: string; direction: Direction };
 
-let map = new Map<`${string}-${string}`, Point>();
+const map = new Map<`${string}-${string}`, Point>();
 
 const guardChar = "^";
 const obstacleChar = "#";
 
 let direction: Direction = "up";
-const input = await fs.readFile("./day-06/input.txt", "utf8");
+const input = await Deno.readTextFile("./day-06/input.txt");
 
 const lines = input.split("\n").filter(Boolean);
 lines.forEach((line, y) => {
@@ -46,12 +43,14 @@ function nextPoint(
   }
 }
 
-let guardRes = [...map.entries()].find(([_, { value }]) => value === guardChar);
+const guardRes = [...map.entries()].find(([_, { value }]) =>
+  value === guardChar
+);
 if (!guardRes) throw new Error("No guard found");
 let [_, guard] = guardRes;
 const originalGuard = { ...guard };
 
-let points: Set<string> = new Set();
+const points: Set<string> = new Set();
 
 while (true) {
   const checkPoint = nextPoint(guard, direction, map);

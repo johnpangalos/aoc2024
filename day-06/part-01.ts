@@ -1,5 +1,3 @@
-import * as fs from "fs/promises";
-
 type Point = { x: number; y: number; value: string };
 type Direction = "up" | "down" | "left" | "right";
 
@@ -29,14 +27,16 @@ function nextPoint(point: Point, direction: Direction): Point | undefined {
   }
 }
 
-const input = await fs.readFile("./day-06/input.txt", "utf8");
+const input = await Deno.readTextFile("./day-06/input.txt");
 const lines = input.split("\n").filter(Boolean);
 lines.forEach((line, y) => {
   line.split("").forEach((char, x) => {
     map.set(`${x}-${y}`, { x, y, value: char });
   });
 });
-let guardRes = [...map.entries()].find(([_, { value }]) => value === guardChar);
+const guardRes = [...map.entries()].find(([_, { value }]) =>
+  value === guardChar
+);
 if (!guardRes) throw new Error("No guard found");
 let [_, guard] = guardRes;
 

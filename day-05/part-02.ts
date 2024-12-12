@@ -1,6 +1,4 @@
-import * as fs from "fs/promises";
-
-const input = await fs.readFile("./day-05/input.txt", "utf8");
+const input = await Deno.readTextFile("./day-05/input.txt");
 const [pageOrdering, updates] = input.split("\n\n").map((x) => x.split("\n"));
 
 const pageMap = new Map<number, { before: number[]; after: number[] }>();
@@ -14,7 +12,7 @@ pageOrdering.forEach((x) => {
   pageMap.set(after, afterEntry);
 });
 
-var count = 0;
+let count = 0;
 for (const update of updates.filter(Boolean)) {
   const nums = update
     .split(",")
@@ -43,7 +41,8 @@ for (const update of updates.filter(Boolean)) {
       ];
     }
   }
-  if (!nums.every((value, index) => value === newOrder[index]))
+  if (!nums.every((value, index) => value === newOrder[index])) {
     count += newOrder[Math.floor(newOrder.length / 2)];
+  }
 }
 console.log(count);

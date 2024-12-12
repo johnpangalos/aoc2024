@@ -1,5 +1,3 @@
-import * as fs from "fs/promises";
-
 type Char = {
   x: number;
   y: number;
@@ -13,7 +11,7 @@ type X = number;
 type Y = number;
 type CharMap = Record<`${X},${Y}`, Char>;
 
-const input = await fs.readFile("./day-04/input.txt", "utf8");
+const input = await Deno.readTextFile("./day-04/input.txt");
 const lines = input.split("\n").filter(Boolean);
 
 function getNeighbors(x: number, y: number, map: CharMap): Char[] {

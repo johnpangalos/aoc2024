@@ -1,5 +1,4 @@
-import * as fs from "fs/promises";
-const input = await fs.readFile("./day-09/input.txt", "utf8");
+const input = await Deno.readTextFile("./day-09/input.txt");
 const numbers = input.split("\n").filter(Boolean)[0].split("").map(Number);
 
 let file = 0;

@@ -1,6 +1,4 @@
-import * as fs from "fs/promises";
-
-const input = await fs.readFile("./day-07/input.txt", "utf8");
+const input = await Deno.readTextFile("./day-07/input.txt");
 const lines: [number, number[]][] = input
   .split("\n")
   .filter(Boolean)

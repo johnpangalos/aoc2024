@@ -1,5 +1,4 @@
-import * as fs from "fs/promises";
-const input = await fs.readFile("./day-08/input.txt", "utf8");
+const input = await Deno.readTextFile("./day-08/input.txt");
 const lines = input.split("\n").filter(Boolean);
 
 type Point = { x: number; y: number; char: string };

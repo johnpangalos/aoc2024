@@ -1,6 +1,4 @@
-import * as fs from "fs/promises";
-
-let input = await fs.readFile("./day-03/input.txt", "utf8");
+let input = await Deno.readTextFile("./day-03/input.txt");
 
 const regexes = { mul: /mul\((\d+),(\d+)\)/, do: /do\(\)/, dont: /don\'t\(\)/ };
 

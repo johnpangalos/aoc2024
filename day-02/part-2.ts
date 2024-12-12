@@ -1,6 +1,4 @@
-import * as fs from "fs/promises";
-
-const input = await fs.readFile("./input.txt", "utf8");
+const input = await Deno.readTextFile("./input.txt");
 
 const lines = input
   .split("\n")

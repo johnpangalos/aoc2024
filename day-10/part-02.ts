@@ -1,11 +1,9 @@
-import * as fs from "fs/promises";
-
 type Point = { x: number; y: number; val: number };
 
 type GridMap = Map<string, Point>;
 
 function getNextNeighbors(point: Point, map: GridMap): Point[] {
-  const { x, y, val } = point;
+  const { x, y } = point;
   const set: Point[] = [];
   [
     map.get(`${x}-${y - 1}`),
@@ -42,7 +40,7 @@ export function main(input: string): number {
     if (!point) continue;
     let neighbors: Point[] = [];
     neighbors.push(point);
-    let idx = 0;
+    const idx = 0;
     while (idx < 9) {
       let nineCount = 0;
       for (const n of neighbors) {
@@ -64,5 +62,5 @@ export function main(input: string): number {
   return score;
 }
 
-const input = await fs.readFile(`./day-10/input.txt`, "utf8");
+const input = await Deno.readTextFile(`./day-10/input.txt`);
 console.log(main(input));
