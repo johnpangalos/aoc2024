@@ -1,0 +1,16 @@
+{
+  "version": "4",
+  "specifiers": {
+    "jsr:@gabriel/ts-pattern@*": "5.6.0"
+  },
+  "jsr": {
+    "@gabriel/ts-pattern@5.6.0": {
+      "integrity": "62a177edb01b25594beba9190c06920b40a8b4dec6f6b58b9e59db6c47db75b4"
+    }
+  },
+  "workspace": {
+    "dependencies": [
+      "jsr:@std/assert@1"
+    ]
+  }
+}

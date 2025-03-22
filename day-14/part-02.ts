@@ -35,9 +35,12 @@ function hasTree(snap: Record<string, Robot>, maxX: number, maxY: number) {
       else str += ".";
       x++;
     }
+    str += "\n";
     x = 0;
     y++;
   }
+  console.clear();
+  console.log(str);
   return str.includes("XXXXXXXXXXXXXXXX");
 }
 
